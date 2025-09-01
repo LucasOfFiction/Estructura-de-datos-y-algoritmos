@@ -93,26 +93,23 @@ def iniciar_compra():
             print(" Debe ingresar un número válido.")
             continue
 
-        if cantidad > productos[codigo].stock:
-            print(" No hay suficiente stock disponible.")
-            continue
-
+        # Agregar al pedido (el método ya descuenta stock)
         pedido.agregar_producto(productos[codigo], cantidad)
-        productos[codigo].stock -= cantidad  # actualizar stock real
-        print(f" {cantidad} x {productos[codigo].nombre} agregado al pedido.")
 
         # Preguntar si quiere seguir
         opcion = input(
             "\n--- ¿Desea agregar otro producto al carrito? ---\n"
             "(Ingresa 'ok' para continuar o escriba 'fin' para terminar): "
         ).strip().lower()
+
         if opcion == "fin":
+            break
+        else:
+            continue
 
-            # 4. Mostrar resumen final
-            print(pedido)
-            print("\n Pedido registrado con éxito. Gracias por su compra.")
-        break
-
+# 4. Mostrar resumen final
+    print(pedido)
+    print("\n Pedido registrado con éxito. Gracias por su compra.")
 
 if __name__ == "__main__":
     iniciar_compra()
