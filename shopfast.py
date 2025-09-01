@@ -96,13 +96,13 @@ def iniciar_compra():
         # Agregar al pedido (el método ya descuenta stock)
         pedido.agregar_producto(productos[codigo], cantidad)
 
-        # Preguntar si quiere seguir
+        # Preguntar si desea agregar otro producto
         opcion = input(
             "\n--- ¿Desea agregar otro producto al carrito? ---\n"
-            "(Ingresa 'ok' para continuar o escriba 'fin' para terminar): "
+            "(Ingresa 'ok' para continuar o escriba 'no' para terminar): "
         ).strip().lower()
 
-        if opcion == "fin":
+        if opcion == "no":
             break
         else:
             continue
